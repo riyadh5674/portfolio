@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riyadh5674.github.io/portfolio/sitemap.xml
