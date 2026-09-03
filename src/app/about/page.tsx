@@ -1,30 +1,38 @@
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 export default function AboutPage() {
   return (
     <>
       {/* Page header */}
-      <section className="py-16 md:py-24">
-        <div className="container-narrow max-w-3xl">
-          <span className="inline-block text-xs font-medium tracking-[0.15em] uppercase text-[var(--color-accent)] mb-4">
-            About
-          </span>
-          <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color-text)] mb-6">
-            Understanding difficult problems, building things, investigating
-            how intelligent systems work
-          </h1>
-          <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">
-            I&apos;m a Computer Science and Engineering student. My interests
-            converge on machine learning — not only as a practical tool, but
-            from its mathematical and conceptual foundations.
-          </p>
+      <section className="py-20 md:py-28">
+        <div className="container-narrow max-w-4xl">
+          <Reveal>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="font-mono text-sm text-[var(--color-accent)]">05</span>
+              <span className="h-px w-10 bg-gradient-to-r from-[var(--color-accent)] to-transparent" />
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-text-secondary)]">
+                <span className="text-[var(--color-accent)]">&gt;</span> About
+              </span>
+            </div>
+            <h1 className="display-font text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-6">
+              Understanding difficult problems, building things, investigating{" "}
+              <span className="text-gradient">intelligent systems</span>
+            </h1>
+            <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+              I&apos;m a Computer Science and Engineering student. My interests
+              converge on machine learning — not only as a practical tool, but
+              from its mathematical and conceptual foundations.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Core narrative */}
-      <section className="py-12 border-t border-[var(--color-border)]">
+      <section className="py-16 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-4">
+          <Reveal>
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-4">
             Who I am
           </h2>
           <p>
@@ -42,16 +50,17 @@ export default function AboutPage() {
             concrete, and care about explaining ideas clearly so that others
             can understand, question, and build on them.
           </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Moves between */}
-      <section className="py-12 bg-[var(--color-bg-warm)] border-t border-[var(--color-border)]">
+      <section className="py-16 bg-[var(--color-bg-soft)] border-t border-[var(--color-border)]">
         <div className="container-narrow">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-8">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10">
             What I move between
           </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "Research",
@@ -80,9 +89,9 @@ export default function AboutPage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)]"
+                className="card card-glow p-6"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-2">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-[var(--color-accent)] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
@@ -95,9 +104,9 @@ export default function AboutPage() {
       </section>
 
       {/* Technical background */}
-      <section className="py-12 border-t border-[var(--color-border)]">
+      <section className="py-16 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-8">
             Technical background
           </h2>
 
@@ -109,7 +118,7 @@ export default function AboutPage() {
               {["Python", "C++", "Java"].map((lang) => (
                 <span
                   key={lang}
-                  className="px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm text-[var(--color-text)]"
+                  className="px-3 py-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-sm text-[var(--color-text)] font-mono"
                 >
                   {lang}
                 </span>
@@ -134,7 +143,7 @@ export default function AboutPage() {
               ].map((area) => (
                 <span
                   key={area}
-                  className="px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-warm)] text-sm text-[var(--color-text-secondary)]"
+                  className="px-3 py-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-sm text-[var(--color-text-secondary)]"
                 >
                   {area}
                 </span>
@@ -171,9 +180,9 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="py-12 bg-[var(--color-bg-warm)] border-t border-[var(--color-border)]">
+      <section className="py-16 bg-[var(--color-bg-soft)] border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-4">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-5">
             Leadership — Class Representative
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
@@ -194,18 +203,18 @@ export default function AboutPage() {
       </section>
 
       {/* Currently */}
-      <section className="py-12 border-t border-[var(--color-border)]">
+      <section className="py-16 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-8">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10">
             Currently
           </h2>
 
           <div className="grid gap-6 md:grid-cols-3">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
+            <div className="card p-6">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[var(--color-accent)] mb-4">
                 Exploring
               </h3>
-              <ul className="space-y-2 text-sm text-[var(--color-text-secondary)]">
+              <ul className="space-y-2.5 text-sm text-[var(--color-text-secondary)]">
                 <li>Physics-guided machine learning</li>
                 <li>Mathematical foundations of ML</li>
                 <li>Research methodology</li>
@@ -213,11 +222,11 @@ export default function AboutPage() {
                 <li>Algorithmic problem solving</li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
+            <div className="card p-6">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[var(--color-accent)] mb-4">
                 Building
               </h3>
-              <ul className="space-y-2 text-sm text-[var(--color-text-secondary)]">
+              <ul className="space-y-2.5 text-sm text-[var(--color-text-secondary)]">
                 <li>
                   <Link
                     href="/projects/bangladesh-flood-predictor"
@@ -237,11 +246,11 @@ export default function AboutPage() {
                 <li>More coming</li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
+            <div className="card p-6">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[var(--color-accent)] mb-4">
                 Aiming toward
               </h3>
-              <ul className="space-y-2 text-sm text-[var(--color-text-secondary)]">
+              <ul className="space-y-2.5 text-sm text-[var(--color-text-secondary)]">
                 <li>Deeper ML research</li>
                 <li>Publication-quality work</li>
                 <li>Meaningful technical collaboration</li>
@@ -252,27 +261,24 @@ export default function AboutPage() {
       </section>
 
       {/* Contact */}
-      <section className="py-12 bg-[var(--color-bg-warm)] border-t border-[var(--color-border)]">
+      <section className="py-16 bg-[var(--color-bg-soft)] border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl text-center">
-          <h2 className="text-2xl font-semibold text-[var(--color-text)] mb-4">
-            Let&apos;s connect
+          <h2 className="display-font text-3xl font-bold text-[var(--color-text)] mb-4">
+            Let&apos;s <span className="text-gradient">connect</span>
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-8">
             If you&apos;re interested in research, technical collaboration, or
             exchanging ideas, I&apos;d be glad to connect.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="mailto:riyadhmia999@gmail.com"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
-            >
+            <a href="mailto:riyadhmia999@gmail.com" className="btn-primary">
               Email Me
             </a>
             <a
               href="https://github.com/riyadh5674"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+              className="btn-ghost"
             >
               GitHub
             </a>

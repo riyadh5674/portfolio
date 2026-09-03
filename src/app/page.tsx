@@ -4,6 +4,7 @@ import { getFeaturedProjects } from "@/data/projects";
 import { asset } from "@/lib/paths";
 import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
+import Reveal from "@/components/Reveal";
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
@@ -11,42 +12,186 @@ export default function HomePage() {
   return (
     <>
       {/* ==================== HERO ==================== */}
-      <section className="min-h-screen flex flex-col justify-center relative">
-        <div className="container-narrow">
-          <div className="max-w-3xl stagger-children">
-            {/* Name */}
-            <div className="mb-4">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-medium tracking-wide bg-[var(--color-accent-light)] text-[var(--color-accent)] mb-8">
-                Computer Science & Engineering
-              </span>
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+        <div className="container-narrow relative z-10">
+          <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] items-center py-16">
+            {/* Left — copy */}
+            <div className="stagger-children">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-accent)]/25 bg-[var(--color-accent-soft)] text-[var(--color-accent)] text-xs font-medium mb-6">
+                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+                Computer Science &amp; Engineering
+              </div>
+
+              <h1 className="display-font text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[var(--color-text)] leading-[1.02] mb-6">
+                MD&nbsp;
+                <span className="text-gradient">Riyad</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed mb-3 max-w-xl">
+                Researching intelligent systems. Building thoughtful software.
+              </p>
+              <p className="text-base text-[var(--color-text-tertiary)] leading-relaxed mb-9 max-w-xl">
+                My work sits where physics-guided machine learning, mathematics,
+                engineering, and creative software design converge.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link href="/research" className="btn-primary">
+                  Research &amp; Projects
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+                <a
+                  href="https://github.com/riyadh5674"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub
+                </a>
+              </div>
+
+              {/* Info strip */}
+              <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
+                <div>
+                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
+                    3.99<span className="text-[var(--color-accent)]">/4</span>
+                  </div>
+                  <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
+                    CGPA
+                  </div>
+                </div>
+                <div>
+                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
+                    4<span className="text-[var(--color-accent)]">th</span>
+                  </div>
+                  <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
+                    Semester
+                  </div>
+                </div>
+                <div>
+                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
+                    CR
+                  </div>
+                  <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
+                    Class Rep
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[var(--color-text)] tracking-tight mb-6">
-              MD RIYAD
-            </h1>
+            {/* Right — decorative avatar / monogram card */}
+            <div className="hidden lg:block relative">
+              <div
+                className="absolute inset-0 m-auto h-72 w-72 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent-2)] to-[var(--color-accent-3)] opacity-30 blur-3xl animate-glow-pulse"
+                aria-hidden="true"
+              />
+              <div className="relative card card-glow p-8 flex flex-col items-center text-center overflow-hidden animate-float">
+                <div className="relative mb-6">
+                  <div
+                    className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] opacity-40 blur-xl"
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] shadow-[0_0_40px_rgb(45_212_191/0.4)]">
+                    <span className="display-font text-4xl font-bold text-[#04110d]">
+                      MR
+                    </span>
+                  </div>
+                  <span className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-bg-card)] bg-[var(--color-success)]" />
+                </div>
+                <div className="font-mono text-xs text-[var(--color-text-tertiary)] tracking-widest uppercase mb-1">
+                  State University of Bangladesh
+                </div>
+                <div className="text-sm text-[var(--color-text-secondary)]">
+                  Research · Engineering · Robotics
+                </div>
 
-            <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed mb-8 max-w-2xl">
-              Researching intelligent systems. Building thoughtful software.
-              Exploring how mathematics, algorithms, and engineering come
-              together to solve real problems.
+                <div className="mt-6 w-full border-t border-[var(--color-border)] pt-5 flex items-center justify-center gap-4 text-xs text-[var(--color-text-tertiary)]">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="text-[var(--color-accent)]">●</span> Available
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="text-[var(--color-accent)]">●</span> Research
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll hint */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-[var(--color-text-muted)] tracking-wider uppercase font-mono">
+              Scroll
+            </span>
+            <div className="w-px h-12 bg-gradient-to-b from-[var(--color-accent)] to-transparent animate-pulse" />
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== THREAD / INTRO ==================== */}
+      <section className="py-20 md:py-28 border-t border-[var(--color-border)]">
+        <div className="container-narrow">
+          <Reveal>
+            <p className="display-font text-2xl md:text-4xl leading-snug text-[var(--color-text)] max-w-4xl font-medium">
+              I move between{" "}
+              <span className="text-gradient font-bold">research</span>,{" "}
+              <span className="text-gradient font-bold">mathematics</span>,{" "}
+              <span className="text-gradient font-bold">engineering</span>, and{" "}
+              <span className="text-gradient font-bold">creativity</span> —
+              understanding difficult problems, reasoning about models, and
+              building systems that turn ideas into working reality.
             </p>
+          </Reveal>
+        </div>
+      </section>
 
-            <p className="text-base text-[var(--color-text-tertiary)] leading-relaxed mb-10 max-w-2xl">
-              My work sits at the intersection of research, mathematics, and
-              building — investigating physics-guided machine learning, designing
-              interactive software, and applying control theory in robotics.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/research"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
-              >
-                Research & Projects
+      {/* ==================== SELECTED WORK ==================== */}
+      <section className="py-16 md:py-24">
+        <div className="container-narrow">
+          <Reveal>
+            <SectionHeading
+              index="01"
+              label="Selected Work"
+              title="Things I'm investigating and building"
+              description="Three projects that reflect the range of my interests — from physics-guided research to interactive software and control-based robotics."
+            />
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {featured.map((project, i) => (
+              <Reveal key={project.id} delay={i * 90}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={150}>
+            <div className="mt-12 text-center">
+              <Link href="/projects" className="btn-ghost">
+                View all projects
                 <svg
-                  width="14"
-                  height="14"
+                  width="15"
+                  height="15"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -58,212 +203,116 @@ export default function HomePage() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </Link>
-              <a
-                href="https://github.com/riyadh5674"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
             </div>
-
-            {/* Info strip */}
-            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[var(--color-text-tertiary)]">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                State University of Bangladesh
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                4th semester · 3.99 / 4.00
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                Class Representative
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-[var(--color-text-muted)] tracking-wider uppercase">
-              Scroll
-            </span>
-            <div className="w-px h-12 bg-[var(--color-border)] animate-pulse" />
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== THREAD ==================== */}
-      <section className="py-16 md:py-20 border-t border-[var(--color-border)]">
-        <div className="container-narrow">
-          <p className="text-sm md:text-base text-[var(--color-text-secondary)] leading-relaxed max-w-3xl">
-            I move between{" "}
-            <span className="text-[var(--color-text)] font-medium">
-              research
-            </span>
-            ,{" "}
-            <span className="text-[var(--color-text)] font-medium">
-              mathematics
-            </span>
-            ,{" "}
-            <span className="text-[var(--color-text)] font-medium">
-              engineering
-            </span>
-            , and{" "}
-            <span className="text-[var(--color-text)] font-medium">
-              creativity
-            </span>{" "}
-            — understanding difficult problems, reasoning about models, and
-            building systems that turn ideas into working reality.
-          </p>
-        </div>
-      </section>
-
-      {/* ==================== SELECTED WORK ==================== */}
-      <section className="py-16 md:py-24">
-        <div className="container-narrow">
-          <SectionHeading
-            label="Selected Work"
-            title="Things I'm investigating and building"
-            description="Three projects that reflect the range of my interests — from physics-guided research to interactive software and control-based robotics."
-          />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-            >
-              View all projects
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ==================== RESEARCH ==================== */}
-      <section className="py-16 md:py-24 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+      <section className="py-20 md:py-28 bg-[var(--color-bg-soft)] border-y border-[var(--color-border)]">
         <div className="container-narrow">
-          <SectionHeading
-            label="Research"
-            title="Physics-guided machine learning for flood prediction"
-            description="An ongoing investigation into how domain knowledge can be embedded in machine learning models through physically meaningful features and constraints — balancing predictive performance with consistency to what we know about the world."
-          />
+          <Reveal>
+            <SectionHeading
+              index="02"
+              label="Research"
+              title="Physics-guided ML for flood prediction"
+              description="An ongoing investigation into how domain knowledge can be embedded in machine learning models through physically meaningful features and constraints."
+            />
+          </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {/* Research overview card */}
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-8 rounded-lg bg-[var(--color-accent-light)] flex items-center justify-center">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--color-accent)"
-                    strokeWidth="2"
-                  >
-                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-                  </svg>
-                </span>
-                <h3 className="font-semibold text-[var(--color-text)]">
-                  Bangladesh Flood Predictor
-                </h3>
-              </div>
-              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                Bangladesh&apos;s geography makes it among the most
-                flood-prone regions on Earth. This research explores whether
-                machine learning with physically meaningful features and
-                monotonic constraints can produce flood-risk predictions that
-                are both accurate and consistent with domain knowledge.
-              </p>
-              <div className="flex items-center justify-between">
+            <Reveal>
+              <div className="card card-glow p-7 h-full flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] text-[#04110d]">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                    </svg>
+                  </span>
+                  <h3 className="display-font text-xl font-bold text-[var(--color-text)]">
+                    Bangladesh Flood Predictor
+                  </h3>
+                </div>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6 flex-1">
+                  Bangladesh&apos;s geography makes it among the most flood-prone
+                  regions on Earth. This research explores whether machine
+                  learning with physically meaningful features can produce
+                  flood-risk predictions that are both accurate and consistent
+                  with domain knowledge.
+                </p>
                 <Link
                   href="/projects/bangladesh-flood-predictor"
-                  className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] inline-flex items-center gap-1.5"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-2)] transition-colors group"
                 >
                   Read the investigation
                   <svg
-                    width="12"
-                    height="12"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-transform group-hover:translate-x-1"
                   >
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </Link>
               </div>
-            </div>
+            </Reveal>
 
-            {/* Research approach card */}
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-8 rounded-lg bg-[var(--color-accent-light)] flex items-center justify-center">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--color-accent)"
-                    strokeWidth="2"
-                  >
-                    <path d="M9 3v3m6-3v3M9 3a2 2 0 1 0 0 6m6-6a2 2 0 1 0 0 6m-9 3h12M9 12v6m6-6v6m2 3H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z" />
-                  </svg>
-                </span>
-                <h3 className="font-semibold text-[var(--color-text)]">
-                  The Investigation
-                </h3>
+            <Reveal delay={100}>
+              <div className="card card-glow p-7 h-full">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-3)] text-[#04110d]">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 3v3m6-3v3M9 3a2 2 0 1 0 0 6m6-6a2 2 0 1 0 0 6m-9 3h12M9 12v6m6-6v6m2 3H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z" />
+                    </svg>
+                  </span>
+                  <h3 className="display-font text-xl font-bold text-[var(--color-text)]">
+                    The Investigation
+                  </h3>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Environmental, geographic & seasonal feature engineering",
+                    "Geospatial risk features with GeoPandas",
+                    "LightGBM & CatBoost baselines vs. physics-guided variants",
+                    "Evaluating predictive performance alongside physical consistency",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm text-[var(--color-text-secondary)]"
+                    >
+                      <span className="mt-0.5 text-[var(--color-accent)] font-mono">
+                        →
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="text-sm text-[var(--color-text-secondary)] space-y-2.5">
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">→</span>
-                  Environmental, geographic & seasonal feature engineering
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">→</span>
-                  Geospatial risk features with GeoPandas
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">→</span>
-                  LightGBM & CatBoost baselines vs. physics-guided variants
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-[var(--color-accent)]">→</span>
-                  Evaluating predictive performance alongside physical
-                  consistency
-                </li>
-              </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -271,223 +320,273 @@ export default function HomePage() {
       {/* ==================== ENGINEERING ==================== */}
       <section className="py-16 md:py-24">
         <div className="container-narrow">
-          <SectionHeading
-            label="Build"
-            title="Systems that are experiments in experience"
-            description="Beyond research, I build software that combines engineering rigor with creative interaction design — treating the user experience itself as the problem to be solved."
-          />
+          <Reveal>
+            <SectionHeading
+              index="03"
+              label="Build"
+              title="Systems that are experiments in experience"
+              description="Beyond research, I build software that combines engineering rigor with creative interaction design."
+            />
+          </Reveal>
+
           <div className="grid gap-8 md:grid-cols-2">
             {/* TeaQuest highlight */}
-            <div className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden card-hover">
-              <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-bg-warm)]">
-                <Image
-                  src={asset("/projects/home.png")}
-                  alt="TeaQuest pixel-art fantasy home screen"
-                  width={1200}
-                  height={750}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)]/80 to-transparent" />
-                <div className="absolute bottom-3 left-4">
-                  <span className="text-xs text-[var(--color-bg)] bg-[var(--color-text)]/70 px-2 py-0.5 rounded-md">
+            <Reveal>
+              <div className="group card card-glow overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={asset("/projects/home.png")}
+                    alt="TeaQuest pixel-art fantasy home screen"
+                    width={1200}
+                    height={750}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-xs font-medium px-2.5 py-1 rounded-md bg-black/50 text-white backdrop-blur">
                     TeaQuest — pixel-art fantasy storefront
                   </span>
                 </div>
+                <div className="p-7">
+                  <h3 className="display-font text-xl font-bold text-[var(--color-text)] mb-3">
+                    TeaQuest
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-5">
+                    An original pixel-art fantasy e-commerce platform that wraps a
+                    complete shopping experience in a world of exploration,
+                    progression, and social interaction.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap gap-2">
+                      {["HTML5", "JS", "Supabase", "PostgreSQL"].map((t) => (
+                        <span
+                          key={t}
+                          className="px-2.5 py-1 text-xs rounded-md border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-[var(--color-text-tertiary)] font-mono"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
+                    <Link
+                      href="/projects/teaquest"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-info)] transition-colors group/link"
+                    >
+                      View project
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-transform group-hover/link:translate-x-1"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg text-[var(--color-text)] mb-2">
-                  TeaQuest
-                </h3>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">
-                  An original pixel-art fantasy e-commerce platform that wraps
-                  a complete shopping experience in a world of exploration,
-                  progression, and social interaction.
-                </p>
-                <Link
-                  href="/projects/teaquest"
-                  className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] inline-flex items-center gap-1.5"
-                >
-                  View project
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+            </Reveal>
 
             {/* Robotics highlight */}
-            <div className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden card-hover">
-              <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-bg-warm)]">
-                {/* Robotics schematic-style visual */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <svg
-                    width="120"
-                    height="60"
-                    viewBox="0 0 120 60"
-                    fill="none"
-                    className="text-[var(--color-accent)]/70"
-                  >
-                    <path
-                      d="M10 40 L30 30 L50 35 L70 20 L90 30 L110 25"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
+            <Reveal delay={100}>
+              <div className="group card card-glow overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-bg-elevated)]">
+                  {/* Robotics visual */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                    <svg
+                      width="140"
+                      height="68"
+                      viewBox="0 0 140 68"
                       fill="none"
-                    />
-                    <circle cx="10" cy="40" r="4" fill="currentColor" />
-                    <circle cx="30" cy="30" r="4" fill="currentColor" />
-                    <circle cx="50" cy="35" r="4" fill="currentColor" />
-                    <circle cx="70" cy="20" r="4" fill="currentColor" />
-                    <circle cx="90" cy="30" r="4" fill="currentColor" />
-                    <circle cx="110" cy="25" r="4" fill="currentColor" />
-                  </svg>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs text-[var(--color-text-tertiary)]">
+                      className="text-[var(--color-accent)]/80"
+                    >
+                      <path
+                        d="M12 46 L34 34 L56 40 L78 22 L100 34 L128 28"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                      <circle cx="12" cy="46" r="4" fill="currentColor" />
+                      <circle cx="34" cy="34" r="4" fill="currentColor" />
+                      <circle cx="56" cy="40" r="4" fill="currentColor" />
+                      <circle cx="78" cy="22" r="4" fill="currentColor" />
+                      <circle cx="100" cy="34" r="4" fill="currentColor" />
+                      <circle cx="128" cy="28" r="4" fill="currentColor" />
+                    </svg>
+                    <span className="font-mono text-xs tracking-widest text-[var(--color-text-tertiary)]">
                       P·D·I·control
                     </span>
                   </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] to-transparent" />
-                <div className="absolute bottom-3 left-4">
-                  <span className="text-xs text-[var(--color-text-secondary)]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-xs font-medium px-2.5 py-1 rounded-md bg-black/50 text-white backdrop-blur">
                     PDI Line Follower — feedback control
                   </span>
                 </div>
+                <div className="p-7">
+                  <h3 className="display-font text-xl font-bold text-[var(--color-text)] mb-3">
+                    PDI-Based Line Follower
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-5">
+                    A robotics project applying Proportional-Derivative-Integral
+                    feedback control to autonomous navigation — control theory in
+                    a practical, physical system.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Arduino", "C", "Control Systems"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 text-xs rounded-md border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-[var(--color-text-tertiary)] font-mono"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
+                    <Link
+                      href="/projects/line-follower-robot"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-warning)] transition-colors group/link"
+                    >
+                      View project
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-transform group-hover/link:translate-x-1"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg text-[var(--color-text)] mb-2">
-                  PDI-Based Line Follower
-                </h3>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">
-                  A robotics project applying Proportional-Derivative-Integral
-                  feedback control to autonomous navigation, demonstrating
-                  control theory in a practical, physical system.
-                </p>
-                <Link
-                  href="/projects/line-follower-robot"
-                  className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] inline-flex items-center gap-1.5"
-                >
-                  View project
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ==================== PROBLEM SOLVING ==================== */}
-      <section className="py-16 md:py-24 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+      <section className="py-20 md:py-28 bg-[var(--color-bg-soft)] border-y border-[var(--color-border)]">
         <div className="container-narrow">
-          <SectionHeading
-            label="Practice"
-            title="Algorithmic problem solving"
-            description="I regularly practice data structures and algorithms on competitive programming platforms."
-          />
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="https://leetcode.com/u/riyadh5674/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:border-[var(--color-accent)] transition-all"
-            >
-              <span className="font-mono text-[var(--color-accent)] text-sm font-bold">
-                LF
-              </span>
-              <div className="flex flex-col">
-                <span className="text-sm font-medium text-[var(--color-text)]">
-                  LeetCode
+          <Reveal>
+            <SectionHeading
+              index="04"
+              label="Practice"
+              title="Algorithmic problem solving"
+              description="I regularly practice data structures and algorithms on competitive programming platforms."
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://leetcode.com/u/riyadh5674/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-glow inline-flex items-center gap-4 px-6 py-4"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-warning)] to-[var(--color-accent)] font-mono font-bold text-[#201200]">
+                  LF
                 </span>
-                <span className="text-xs text-[var(--color-text-tertiary)]">
-                  Algorithms & data structures
+                <span className="flex flex-col">
+                  <span className="text-sm font-semibold text-[var(--color-text)]">
+                    LeetCode
+                  </span>
+                  <span className="text-xs text-[var(--color-text-tertiary)]">
+                    Algorithms &amp; data structures
+                  </span>
                 </span>
-              </div>
-            </a>
-            <a
-              href="https://codeforces.com/profile/riyadh5674"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:border-[var(--color-accent)] transition-all"
-            >
-              <span className="font-mono text-[var(--color-accent)] text-sm font-bold">
-                CF
-              </span>
-              <div className="flex flex-col">
-                <span className="text-sm font-medium text-[var(--color-text)]">
-                  Codeforces
+              </a>
+              <a
+                href="https://codeforces.com/profile/riyadh5674"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-glow inline-flex items-center gap-4 px-6 py-4"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-info)] to-[var(--color-accent-3)] font-mono font-bold text-[#04121e]">
+                  CF
                 </span>
-                <span className="text-xs text-[var(--color-text-tertiary)]">
-                  Competitive problem solving
+                <span className="flex flex-col">
+                  <span className="text-sm font-semibold text-[var(--color-text)]">
+                    Codeforces
+                  </span>
+                  <span className="text-xs text-[var(--color-text-tertiary)]">
+                    Competitive problem solving
+                  </span>
                 </span>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ==================== ABOUT SNIPPET ==================== */}
       <section className="py-16 md:py-24">
         <div className="container-narrow">
-          <SectionHeading
-            label="About"
-            title="A student of computer science, machine learning, and ideas"
-          />
-          <div className="grid gap-10 md:grid-cols-3">
-            <p className="text-[var(--color-text-secondary)] leading-relaxed md:col-span-2">
-              I&apos;m a 4th-semester Computer Science & Engineering student at
-              the State University of Bangladesh with a CGPA of 3.99/4.00. My
-              interests span machine learning, its mathematical foundations,
-              and the engineering required to build systems that work in the
-              real world.
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 self-start text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-            >
-              More about me
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+          <Reveal>
+            <SectionHeading
+              index="05"
+              label="About"
+              title="A student of computer science, machine learning, and ideas"
+            />
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="grid gap-10 md:grid-cols-3 items-start">
+              <p className="text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed md:col-span-2">
+                I&apos;m a 4th-semester Computer Science &amp; Engineering student at
+                the State University of Bangladesh with a CGPA of 3.99/4.00. My
+                interests span machine learning, its mathematical foundations,
+                and the engineering required to build systems that work in the
+                real world.
+              </p>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 self-start text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-2)] transition-colors group"
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
-          </div>
+                More about me
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ==================== LEADERSHIP ==================== */}
-      <section className="py-16 md:py-24 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+      <section className="py-20 md:py-28 bg-[var(--color-bg-soft)] border-y border-[var(--color-border)]">
         <div className="container-narrow">
-          <SectionHeading
-            label="Leadership"
-            title="Class Representative"
-            description="Serving as Class Representative for my cohort — coordinating schedules, communicating examination information, and helping students and faculty work together toward collective academic progress."
-          />
+          <Reveal>
+            <SectionHeading
+              index="06"
+              label="Leadership"
+              title="Class Representative"
+              description="Serving as Class Representative for my cohort — coordinating schedules, communicating information, and helping students and faculty work together toward collective progress."
+            />
+          </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               "Manages and communicates class schedules",
@@ -496,82 +595,85 @@ export default function HomePage() {
               "Helps students coordinate and communicate",
               "Works toward collective academic progress",
               "Helps the class grow together",
-            ].map((item) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)]"
-              >
-                <span className="mt-1 text-[var(--color-accent)]">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <span className="text-sm text-[var(--color-text-secondary)]">
-                  {item}
-                </span>
-              </div>
+            ].map((item, i) => (
+              <Reveal key={item} delay={i * 60}>
+                <div className="card p-5 flex items-start gap-3 h-full">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)]">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </span>
+                  <span className="text-sm text-[var(--color-text-secondary)]">
+                    {item}
+                  </span>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ==================== CONTACT ==================== */}
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-28">
         <div className="container-narrow">
-          <div className="text-center max-w-xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color-text)] mb-4">
-              Let&apos;s connect
-            </h2>
-            <p className="text-[var(--color-text-secondary)] leading-relaxed mb-8">
-              If you&apos;re interested in research, technical collaboration,
-              or exchanging ideas, I&apos;d be glad to connect.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="mailto:riyadhmia999@gmail.com"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+          <Reveal>
+            <div className="card card-glow p-10 md:p-16 text-center max-w-3xl mx-auto overflow-hidden">
+              <h2 className="display-font text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">
+                Let&apos;s <span className="text-gradient">connect</span>
+              </h2>
+              <p className="text-[var(--color-text-secondary)] leading-relaxed mb-9 max-w-lg mx-auto">
+                If you&apos;re interested in research, technical collaboration, or
+                exchanging ideas, I&apos;d be glad to connect.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                  href="mailto:riyadhmia999@gmail.com"
+                  className="btn-primary"
                 >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                Email Me
-              </a>
-              <a
-                href="https://github.com/riyadh5674"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email Me
+                </a>
+                <a
+                  href="https://github.com/riyadh5674"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
                 >
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub
+                </a>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

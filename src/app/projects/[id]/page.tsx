@@ -60,21 +60,22 @@ export default async function ProjectPage({ params }: Props) {
       {/* Project header */}
       <section className="py-10 md:py-16">
         <div className="container-narrow max-w-4xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-medium tracking-wide uppercase text-[var(--color-accent)]">
+          <div className="inline-flex items-center gap-3 mb-4">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
               {project.category === "research"
                 ? "Research"
                 : project.category === "engineering"
                 ? "Engineering"
                 : "Robotics"}
             </span>
+            <span className="h-px w-8 bg-gradient-to-r from-[var(--color-accent)] to-transparent" />
             <StatusBadge status={project.status} />
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color-text)] mb-3">
+          <h1 className="display-font text-4xl md:text-6xl font-bold text-[var(--color-text)] mb-4">
             {project.title}
           </h1>
-          <p className="text-lg text-[var(--color-text-secondary)] mb-6">
+          <p className="text-lg md:text-xl text-[var(--color-text-secondary)] mb-8">
             {project.subtitle}
           </p>
 
@@ -83,7 +84,7 @@ export default async function ProjectPage({ params }: Props) {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] text-xs text-[var(--color-text-secondary)]"
+                className="px-3 py-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-xs text-[var(--color-text-secondary)] font-mono"
               >
                 {tech}
               </span>
@@ -97,7 +98,7 @@ export default async function ProjectPage({ params }: Props) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
+                className="btn-primary"
               >
                 <svg
                   width="15"
@@ -115,7 +116,7 @@ export default async function ProjectPage({ params }: Props) {
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+                className="btn-ghost"
               >
                 <svg
                   width="15"
@@ -173,7 +174,7 @@ function FloodPredictorContent() {
     <>
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Overview
           </h2>
           <div className="prose">
@@ -192,7 +193,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Research question
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed">
@@ -207,7 +208,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Data & features
           </h2>
           <p>
@@ -228,7 +229,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Physics-guided reasoning
           </h2>
           <p>
@@ -264,7 +265,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Model experiments
           </h2>
           <p>Four configurations were investigated:</p>
@@ -305,7 +306,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Results & interpretation
           </h2>
 
@@ -364,7 +365,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             What I&apos;m learning
           </h2>
           <p>
@@ -387,7 +388,7 @@ function FloodPredictorContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Status & future work
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
@@ -416,13 +417,13 @@ function FloodPredictorContent() {
               href="https://github.com/riyadh5674/Bangladesh-Flood-Predictor"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
+              className="btn-primary"
             >
               View on GitHub
             </a>
             <Link
               href="/research"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+              className="btn-ghost"
             >
               Research overview
             </Link>
@@ -492,7 +493,7 @@ function TeaQuestContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             The thesis
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed">
@@ -607,7 +608,7 @@ function TeaQuestContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Architecture
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
@@ -645,7 +646,7 @@ function TeaQuestContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Design decisions
           </h2>
           <div className="space-y-6">
@@ -685,7 +686,7 @@ function TeaQuestContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Current status & honest limitations
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
@@ -714,7 +715,7 @@ function TeaQuestContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             What I&apos;m learning
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed">
@@ -733,7 +734,7 @@ function TeaQuestContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Future work
           </h2>
           <ul className="space-y-3">
@@ -760,7 +761,7 @@ function TeaQuestContent() {
               href="https://riyadh5674.github.io/TeaQuest/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
+              className="btn-primary"
             >
               Try the Live Demo
             </a>
@@ -768,7 +769,7 @@ function TeaQuestContent() {
               href="https://github.com/riyadh5674/TeaQuest"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+              className="btn-ghost"
             >
               View on GitHub
             </a>
@@ -787,7 +788,7 @@ function LineFollowerContent() {
     <>
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Overview
           </h2>
           <p>
@@ -820,7 +821,7 @@ function LineFollowerContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             The problem
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed">
@@ -836,7 +837,7 @@ function LineFollowerContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             The control approach
           </h2>
           <div className="space-y-4">
@@ -872,7 +873,7 @@ function LineFollowerContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Implementation
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
@@ -908,7 +909,7 @@ function LineFollowerContent() {
 
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             What I&apos;m learning
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed">
@@ -928,7 +929,7 @@ function LineFollowerContent() {
 
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-text)] mb-6">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Connect
           </h2>
           <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
