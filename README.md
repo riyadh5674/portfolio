@@ -6,6 +6,11 @@ Built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS v4**. Fu
 
 ---
 
+#### 🌐 Live site
+**https://riyadh5674.github.io/portfolio/**
+
+---
+
 ## ✨ Highlights
 
 - **Research-first** presentation of the Bangladesh Flood Predictor project — physics-guided machine learning, presented with scientific humility.
