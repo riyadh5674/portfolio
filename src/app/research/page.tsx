@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Spotlight from "@/components/Spotlight";
 
 export default function ResearchPage() {
   return (
@@ -73,6 +74,7 @@ export default function ResearchPage() {
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 60}>
+                <Spotlight className="h-full rounded-xl">
                 <div className="card card-glow p-6 h-full">
                   <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
                     {item.title}
@@ -81,6 +83,7 @@ export default function ResearchPage() {
                     {item.text}
                   </p>
                 </div>
+                </Spotlight>
               </Reveal>
             ))}
           </div>
@@ -293,7 +296,7 @@ export default function ResearchPage() {
                 href="https://github.com/riyadh5674/Bangladesh-Flood-Predictor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-primary sheen"
               >
                 <svg
                   width="15"

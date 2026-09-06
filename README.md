@@ -14,6 +14,8 @@ Built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS v4**. Fu
 ## ✨ Highlights
 
 - **Research-first** presentation of the Bangladesh Flood Predictor project — physics-guided machine learning, presented with scientific humility.
+- **SUB Innovation Club Website** — a complete redesign proposal for the club's web presence: 15+ content sections, an online membership system with payment, and automated deployment, built solo with Vite + SCSS + Bootstrap 5.
+- **Ames Housing Price Prediction** — a no-leakage, pipeline-based linear regression case study (testing R² 0.885) with EDA-derived charts and a serialized production model.
 - **TeaQuest** — a creative e-commerce fantasy-world platform with real screenshots and an architecture breakdown.
 - **PDI Line Follower** — a robotics/control project.
 - **Dark mode** (persisted, respects system preference).
@@ -55,13 +57,14 @@ npm run lint
 ```
 portfolio/
 ├── public/
-│   ├── projects/            # project screenshots (TeaQuest)
-│   ├── og.png               # generated social preview image
+│   ├── projects/            # project screenshots (TeaQuest, Ames EDA charts)
+│   ├── og.png               # generated social preview image (dark theme)
+│   ├── app-icon.png         # generated app/favicon image
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   └── favicon.ico
 ├── scripts/
-│   └── generate-og.mjs      # generates public/og.png (run before build)
+│   └── generate-og.mjs      # generates public/og.png + public/app-icon.png (run before build)
 ├── .github/workflows/
 │   └── deploy.yml           # GitHub Pages deployment workflow
 ├── src/

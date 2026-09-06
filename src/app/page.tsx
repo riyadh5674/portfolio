@@ -5,6 +5,11 @@ import { asset } from "@/lib/paths";
 import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
+import Tilt from "@/components/Tilt";
+import Typewriter from "@/components/Typewriter";
+import Counter from "@/components/Counter";
+import Marquee from "@/components/Marquee";
+import Spotlight from "@/components/Spotlight";
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
@@ -24,12 +29,23 @@ export default function HomePage() {
 
               <h1 className="display-font text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[var(--color-text)] leading-[1.02] mb-6">
                 MD&nbsp;
-                <span className="text-gradient">Riyad</span>
+                <span className="text-gradient-animate">Riyad</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed mb-3 max-w-xl">
-                Researching intelligent systems. Building thoughtful software.
-              </p>
+              <div className="flex items-center gap-2 text-xl md:text-2xl text-[var(--color-text-secondary)] font-medium mb-3">
+                <span className="animate-wave text-2xl" aria-hidden="true">👋</span>
+                <span>I&apos;m a</span>
+                <Typewriter
+                  words={[
+                    "researcher",
+                    "machine learning enthusiast",
+                    "software builder",
+                    "problem solver",
+                  ]}
+                  className="text-[var(--color-accent)]"
+                />
+              </div>
+
               <p className="text-base text-[var(--color-text-tertiary)] leading-relaxed mb-9 max-w-xl">
                 My work sits where physics-guided machine learning, mathematics,
                 engineering, and creative software design converge.
@@ -37,7 +53,7 @@ export default function HomePage() {
 
               {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4">
-                <Link href="/research" className="btn-primary">
+                <Link href="/research" className="btn-primary sheen">
                   Research &amp; Projects
                   <svg
                     width="15"
@@ -71,26 +87,26 @@ export default function HomePage() {
                 </a>
               </div>
 
-              {/* Info strip */}
+              {/* Animated stats strip */}
               <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-                <div>
-                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
-                    3.99<span className="text-[var(--color-accent)]">/4</span>
+                <div className="border-l-2 border-[var(--color-accent)] pl-3">
+                  <div className="display-font text-3xl font-bold text-[var(--color-text)]">
+                    <Counter end={3.99} suffix="/4" />
                   </div>
                   <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
                     CGPA
                   </div>
                 </div>
-                <div>
-                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
-                    4<span className="text-[var(--color-accent)]">th</span>
+                <div className="border-l-2 border-[var(--color-accent)] pl-3">
+                  <div className="display-font text-3xl font-bold text-[var(--color-text)]">
+                    <Counter end={4} suffix="th" />
                   </div>
                   <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
                     Semester
                   </div>
                 </div>
-                <div>
-                  <div className="display-font text-2xl font-bold text-[var(--color-text)]">
+                <div className="border-l-2 border-[var(--color-accent)] pl-3">
+                  <div className="display-font text-3xl font-bold text-[var(--color-text)]">
                     CR
                   </div>
                   <div className="text-xs text-[var(--color-text-tertiary)] mt-1">
@@ -100,53 +116,82 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — decorative avatar / monogram card */}
+            {/* Right — animated avatar card */}
             <div className="hidden lg:block relative">
               <div
                 className="absolute inset-0 m-auto h-72 w-72 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent-2)] to-[var(--color-accent-3)] opacity-30 blur-3xl animate-glow-pulse"
                 aria-hidden="true"
               />
-              <div className="relative card card-glow p-8 flex flex-col items-center text-center overflow-hidden animate-float">
-                <div className="relative mb-6">
-                  <div
-                    className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] opacity-40 blur-xl"
-                    aria-hidden="true"
-                  />
-                  <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] shadow-[0_0_40px_rgb(45_212_191/0.4)]">
-                    <span className="display-font text-4xl font-bold text-[#04110d]">
-                      MR
+              <Tilt className="relative animate-scale-in">
+                <div className="card card-glow p-8 flex flex-col items-center text-center overflow-hidden">
+                  {/* rotating conic ring behind avatar */}
+                  <div className="relative mb-6">
+                    <div
+                      className="absolute -inset-1 rounded-full opacity-40 blur-xl animate-spin-slow"
+                      style={{
+                        background:
+                          "conic-gradient(from 0deg, transparent 0deg, var(--color-accent) 90deg, transparent 180deg)",
+                      }}
+                      aria-hidden="true"
+                    />
+                    <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] shadow-[0_0_40px_rgb(45_212_191/0.4)]">
+                      <span className="display-font text-4xl font-bold text-[#04110d]">
+                        MR
+                      </span>
+                    </div>
+                    <span className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-bg-card)] bg-[var(--color-success)]" />
+                  </div>
+                  <div className="font-mono text-xs text-[var(--color-text-tertiary)] tracking-widest uppercase mb-1">
+                    State University of Bangladesh
+                  </div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">
+                    Research · Engineering · Robotics
+                  </div>
+
+                  <div className="mt-6 w-full border-t border-[var(--color-border)] pt-5 flex items-center justify-center gap-4 text-xs text-[var(--color-text-tertiary)]">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="text-[var(--color-success)]">●</span> Available
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="text-[var(--color-accent)]">●</span> Research
                     </span>
                   </div>
-                  <span className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-bg-card)] bg-[var(--color-success)]" />
                 </div>
-                <div className="font-mono text-xs text-[var(--color-text-tertiary)] tracking-widest uppercase mb-1">
-                  State University of Bangladesh
-                </div>
-                <div className="text-sm text-[var(--color-text-secondary)]">
-                  Research · Engineering · Robotics
-                </div>
-
-                <div className="mt-6 w-full border-t border-[var(--color-border)] pt-5 flex items-center justify-center gap-4 text-xs text-[var(--color-text-tertiary)]">
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="text-[var(--color-accent)]">●</span> Available
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="text-[var(--color-accent)]">●</span> Research
-                  </span>
-                </div>
-              </div>
+              </Tilt>
             </div>
           </div>
         </div>
 
         {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-[var(--color-text-muted)] tracking-wider uppercase font-mono">
-              Scroll
-            </span>
-            <div className="w-px h-12 bg-gradient-to-b from-[var(--color-accent)] to-transparent animate-pulse" />
-          </div>
+        <div className="absolute bottom-6 flex flex-col items-center gap-2 left-0 right-0 z-10">
+          <span className="text-xs text-[var(--color-text-muted)] tracking-wider uppercase font-mono">
+            Scroll
+          </span>
+          <div className="w-px h-12 bg-gradient-to-b from-[var(--color-accent)] to-transparent animate-pulse" />
+        </div>
+      </section>
+
+      {/* ==================== TECH MARQUEE ==================== */}
+      <section className="border-y border-[var(--color-border)] py-6 bg-[var(--color-bg-soft)]/50">
+        <div className="container-narrow">
+          <Marquee
+            items={[
+              "Python",
+              "Machine Learning",
+              "LightGBM",
+              "CatBoost",
+              "GeoPandas",
+              "scikit-learn",
+              "C++",
+              "Java",
+              "JavaScript",
+              "Supabase",
+              "PostgreSQL",
+              "Arduino",
+              "Control Systems",
+              "Algorithms",
+            ]}
+          />
         </div>
       </section>
 
@@ -156,10 +201,10 @@ export default function HomePage() {
           <Reveal>
             <p className="display-font text-2xl md:text-4xl leading-snug text-[var(--color-text)] max-w-4xl font-medium">
               I move between{" "}
-              <span className="text-gradient font-bold">research</span>,{" "}
-              <span className="text-gradient font-bold">mathematics</span>,{" "}
-              <span className="text-gradient font-bold">engineering</span>, and{" "}
-              <span className="text-gradient font-bold">creativity</span> —
+              <span className="text-gradient-animate font-bold">research</span>,{" "}
+              <span className="text-gradient-animate font-bold">mathematics</span>,{" "}
+              <span className="text-gradient-animate font-bold">engineering</span>, and{" "}
+              <span className="text-gradient-animate font-bold">creativity</span> —
               understanding difficult problems, reasoning about models, and
               building systems that turn ideas into working reality.
             </p>
@@ -175,13 +220,15 @@ export default function HomePage() {
               index="01"
               label="Selected Work"
               title="Things I'm investigating and building"
-              description="Three projects that reflect the range of my interests — from physics-guided research to interactive software and control-based robotics."
+              description="Five projects that reflect the range of my interests — from physics-guided research and reproducible ML pipelines to interactive software, club-scale web builds, and control-based robotics."
             />
           </Reveal>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featured.map((project, i) => (
               <Reveal key={project.id} delay={i * 90}>
-                <ProjectCard project={project} />
+                <Spotlight className="h-full rounded-xl">
+                  <ProjectCard project={project} />
+                </Spotlight>
               </Reveal>
             ))}
           </div>
@@ -330,8 +377,85 @@ export default function HomePage() {
           </Reveal>
 
           <div className="grid gap-8 md:grid-cols-2">
-            {/* TeaQuest highlight */}
+            {/* Innovation Club website highlight */}
             <Reveal>
+              <Spotlight className="h-full rounded-xl">
+              <div className="group card card-glow overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-bg-elevated)]">
+                  {/* Browser-frame visual */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                    <div className="w-40 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-bg-card)] shadow-md overflow-hidden">
+                      <div className="flex items-center gap-1.5 px-3 py-2 border-b border-[var(--color-border)]">
+                        <span className="w-2 h-2 rounded-full bg-[#f87171]" />
+                        <span className="w-2 h-2 rounded-full bg-[#fbbf24]" />
+                        <span className="w-2 h-2 rounded-full bg-[#34d399]" />
+                      </div>
+                      <div className="p-3 space-y-1.5">
+                        <div className="h-1.5 w-3/4 rounded-full bg-[var(--color-accent)]/70" />
+                        <div className="h-1.5 w-1/2 rounded-full bg-[var(--color-border-light)]" />
+                        <div className="h-1.5 w-2/3 rounded-full bg-[var(--color-border-light)]" />
+                        <div className="h-1.5 w-1/3 rounded-full bg-[var(--color-accent)]/40" />
+                      </div>
+                    </div>
+                    <span className="font-mono text-xs tracking-widest text-[var(--color-text-tertiary)]">
+                      Bootstrap&nbsp;5&nbsp;·&nbsp;SCSS&nbsp;·&nbsp;Vite
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-xs font-medium px-2.5 py-1 rounded-md bg-black/50 text-white backdrop-blur">
+                    SUB Innovation Club — full website redesign
+                  </span>
+                </div>
+                <div className="p-7">
+                  <h3 className="display-font text-xl font-bold text-[var(--color-text)] mb-3">
+                    SUB Innovation Club Website
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-5">
+                    A production-ready redesign proposal for the club&apos;s web
+                    presence — 15+ sections, an online membership system with
+                    payment, and automated deployment, ready for the university
+                    IT team to adopt.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Vite", "Bootstrap 5", "SCSS", "Formspree"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 text-xs rounded-md border border-[var(--color-border-light)] bg-[var(--color-bg-soft)] text-[var(--color-text-tertiary)] font-mono"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
+                    <Link
+                      href="/projects/innovation-club-website"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] transition-colors group/link"
+                    >
+                      View project
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-transform group-hover/link:translate-x-1"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              </Spotlight>
+            </Reveal>
+
+            {/* TeaQuest highlight */}
+            <Reveal delay={100}>
+              <Spotlight className="h-full rounded-xl">
               <div className="group card card-glow overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -392,10 +516,12 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+              </Spotlight>
             </Reveal>
 
             {/* Robotics highlight */}
             <Reveal delay={100}>
+              <Spotlight className="h-full rounded-xl">
               <div className="group card card-glow overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-bg-elevated)]">
                   {/* Robotics visual */}
@@ -473,6 +599,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+              </Spotlight>
             </Reveal>
           </div>
         </div>
@@ -638,7 +765,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a
                   href="mailto:riyadhmia999@gmail.com"
-                  className="btn-primary"
+                  className="btn-primary sheen"
                 >
                   <svg
                     width="16"

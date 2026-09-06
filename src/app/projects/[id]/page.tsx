@@ -98,7 +98,7 @@ export default async function ProjectPage({ params }: Props) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-primary sheen"
               >
                 <svg
                   width="15"
@@ -153,6 +153,10 @@ function ProjectSpecificContent({ project }: { project: Project }) {
       return <TeaQuestContent />;
     case "line-follower-robot":
       return <LineFollowerContent />;
+    case "innovation-club-website":
+      return <InnovationClubContent />;
+    case "ames-housing-price-prediction":
+      return <AmesHousingContent />;
     default:
       return (
         <section className="py-12 border-t border-[var(--color-border)]">
@@ -417,7 +421,7 @@ function FloodPredictorContent() {
               href="https://github.com/riyadh5674/Bangladesh-Flood-Predictor"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-primary sheen"
             >
               View on GitHub
             </a>
@@ -761,7 +765,7 @@ function TeaQuestContent() {
               href="https://riyadh5674.github.io/TeaQuest/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-primary sheen"
             >
               Try the Live Demo
             </a>
@@ -943,6 +947,417 @@ function LineFollowerContent() {
           >
             GitHub Profile
           </a>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ============================================
+   SUB INNOVATION CLUB WEBSITE CONTENT
+   ============================================ */
+function InnovationClubContent() {
+  const features = [
+    {
+      title: "Hero + stats strip",
+      desc: "Animated tagline with a key-stats strip that counts up on scroll.",
+    },
+    {
+      title: "About / Mission / Vision",
+      desc: "The club's story and purpose, written as real editorial content.",
+    },
+    {
+      title: "All 8 flagship activities",
+      desc: "Competitions and challenges presented as visual, content-rich cards.",
+    },
+    {
+      title: "Events timeline",
+      desc: "A highlights timeline rebuilt from the club's official Facebook page.",
+    },
+    {
+      title: "Executive committee + advisors",
+      desc: "Data-driven member cards for the committee, convenor and advisors.",
+    },
+    {
+      title: "Photo gallery",
+      desc: "A lightbox gallery of workshops and events.",
+    },
+    {
+      title: "FAQ + testimonials",
+      desc: "An 8-question accordion and member testimonials to build trust.",
+    },
+    {
+      title: "Partners + news",
+      desc: "Affiliations section and blog-style announcement cards.",
+    },
+  ];
+
+  return (
+    <>
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl prose">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Overview
+          </h2>
+          <p>
+            The official{" "}
+            <strong>
+              SUB Innovation Club
+            </strong>{" "}
+            page for the State University of Bangladesh consisted of little more
+            than a one-line objective and a list of activity names. On my own
+            initiative, I conceived and built a{" "}
+            <span className="text-[var(--color-text)] font-medium">
+              complete, production-ready redesign
+            </span>{" "}
+            as a proposal for the club&apos;s 2026&ndash;27 relaunch.
+          </p>
+          <p className="mt-4">
+            The result is a rich, content-driven platform built with{" "}
+            <strong>Vite, SCSS and Bootstrap 5</strong> — deliberately matching
+            the university&apos;s existing Bootstrap-based stack so the club&apos;s
+            page can merge cleanly into sub.ac.bd. Real club information
+            (convenor, recent workshops, flagship activities) was incorporated
+            from the official site and the club&apos;s Facebook page.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            What I built
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            15+ designed content sections across the page, all on a responsive
+            Bootstrap 5 foundation:
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {features.map((f) => (
+              <div
+                key={f.title}
+                className="p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)]"
+              >
+                <h3 className="text-sm font-semibold text-[var(--color-text)] mb-1.5">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  {f.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            The membership system
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
+            A complete online membership application flow with a{" "}
+            <span className="text-[var(--color-text)] font-medium">
+              6-step validated form
+            </span>
+            :
+          </p>
+          <ul className="space-y-3">
+            {[
+              "Personal — name, student ID, photo, DOB, gender, blood group",
+              "Academic — department, batch, semester, session",
+              "Contact — email, phone, WhatsApp, address, emergency contact",
+              "Skills & interests — checkboxes, motivation, experience",
+              "Payment — bKash / Nagad / Rocket / bank (৳300) with transaction proof",
+              "Review & submit — full summary, terms acceptance, confirmation with reference number",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-2 text-sm text-[var(--color-text-secondary)] leading-relaxed"
+              >
+                <span className="text-[var(--color-accent)] mt-1">•</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            The form validates fields in real time (student-id pattern, email,
+            phone) and delivers every submission straight to the club by email
+            via Formspree — so the committee receives applications without any
+            server maintenance.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Engineering decisions
+          </h2>
+          <ul className="space-y-4">
+            {[
+              {
+                title: "Stack that matches the university",
+                desc: "Bootstrap 5 + SCSS + vanilla JavaScript, the same foundation the university uses — no new framework to learn or maintain.",
+              },
+              {
+                title: "Content edit by anyone",
+                desc: "Every word on the site lives in a single data file (src/data/club-data.js). Future committee members update content, not code.",
+              },
+              {
+                title: "Automated deployment",
+                desc: "A GitHub Actions workflow builds with Vite and publishes to GitHub Pages on every push to main.",
+              },
+              {
+                title: "Adoption path to sub.ac.bd",
+                desc: "The compiled static output swaps directly into the university CMS — replace the header/footer, keep <main>, add the CSS/JS.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)]"
+              >
+                <h3 className="text-sm font-semibold text-[var(--color-text)] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-4">
+            Status &amp; adoption
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
+            The proposal is live on GitHub Pages and fully documented for the
+            committee — including how the university IT team merges it into the
+            official site. It is licensed MIT so the club can adopt, extend, and
+            own it freely.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="https://riyadh5674.github.io/sub-innovation-club"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary sheen"
+            >
+              Visit Live Site
+            </a>
+            <a
+              href="https://github.com/riyadh5674/sub-innovation-club"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ============================================
+   AMES HOUSING PRICE PREDICTION CONTENT
+   ============================================ */
+function AmesHousingContent() {
+  const metrics = [
+    { metric: "Testing R²", value: "0.885", note: "88.5% of price variance explained on unseen data" },
+    { metric: "Testing RMSE", value: "≈ $22k", note: "Typical magnitude of prediction errors" },
+    { metric: "Testing MAE", value: "≈ $16.4k", note: "Within ~8.2% of actual sale price" },
+    { metric: "5-Fold CV R²", value: "0.88 ± 0.02", note: "Stable across data subsets" },
+  ];
+
+  return (
+    <>
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl prose">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Overview
+          </h2>
+          <p>
+            A comprehensive case study in{" "}
+            <strong>supervised machine learning</strong>: predict the final sale
+            price of residential homes in Ames, Iowa, from{" "}
+            <span className="text-[var(--color-text)] font-medium">
+              81 descriptive features
+            </span>{" "}
+            — zoning, quality ratings, square footage, neighborhood, and more.
+          </p>
+          <p className="mt-4">
+            Where typical tutorials stop at a fitted model, this project follows
+            the MLOps discipline of{" "}
+            <strong>no data leakage</strong> — every encoding and scaling step
+            is fitted on the training data only and composed into a single
+            scikit-learn <code>Pipeline</code>, the same structure used for
+            production deployment.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Data &amp; preprocessing
+          </h2>
+          <ul className="space-y-3">
+            {[
+              "Missing values handled via imputation",
+              "Engineered features: House_Age, Total_SF",
+              "Log-transformation of the target to correct skewness",
+              "Numerical features standardized (StandardScaler)",
+              "Categorical features one-hot encoded (first category dropped to avoid multicollinearity)",
+              "80/20 train-test split performed before any transformations",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-2 text-sm text-[var(--color-text-secondary)] leading-relaxed"
+              >
+                <span className="text-[var(--color-accent)] mt-1">•</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Exploratory analysis
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            EDA drove the preprocessing decisions — how the target is
+            distributed, which features correlate most strongly, and which
+            plots exposed the transformations worth making.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                src: asset("/projects/ames-correlation.png"),
+                alt: "Correlation heatmap of Ames features",
+                cap: "Correlation structure across features",
+              },
+              {
+                src: asset("/projects/ames-log-distribution.png"),
+                alt: "Distribution of log-transformed sale price",
+                cap: "Log-transformed target distribution",
+              },
+              {
+                src: asset("/projects/ames-top-features.png"),
+                alt: "Top 15 correlated features with sale price",
+                cap: "Top features by correlation",
+              },
+            ].map((img) => (
+              <figure
+                key={img.src}
+                className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={1200}
+                  height={750}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+                <figcaption className="px-3 py-2.5 text-xs text-[var(--color-text-tertiary)]">
+                  {img.cap}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            Results
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            Ordinary Least Squares linear regression via the normal equation
+            (Scikit-Learn&apos;s <code>LinearRegression</code>), capturing 317
+            features after encoding:
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {metrics.map((m) => (
+              <div
+                key={m.metric}
+                className="p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)]"
+              >
+                <div className="display-font text-xl font-bold text-[var(--color-accent)] mb-1">
+                  {m.value}
+                </div>
+                <div className="text-sm font-medium text-[var(--color-text)]">
+                  {m.metric}
+                </div>
+                <div className="mt-1 text-xs text-[var(--color-text-tertiary)] leading-relaxed">
+                  {m.note}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 p-5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-bg-soft)]">
+            <h3 className="text-sm font-semibold text-[var(--color-text)] mb-2">
+              Interpretation
+            </h3>
+            <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+              Standardized coefficients identify the strongest price drivers —
+              <span className="text-[var(--color-text)]"> Overall_Qual</span>{" "}
+              and
+              <span className="text-[var(--color-text)]"> Gr_Liv_Area</span> —
+              as well as the strongest detractors. Residual analysis (Q-Q
+              plots, histograms, actual-vs-predicted scatter) confirmed
+              homoscedasticity and near-normal errors.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            The production pipeline
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
+            The preprocessor and regressor are bundled into a single{" "}
+            <code>Pipeline</code> and serialized as{" "}
+            <code>ames_housing_pipeline.pkl</code> — capable of predicting on
+            new raw data in a single line of code, which is the point of the
+            no-leakage discipline.
+          </p>
+          <pre className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-soft)] text-xs font-mono text-[var(--color-text-secondary)] overflow-x-auto leading-relaxed">
+{`# predict on brand-new, raw data
+import joblib
+pipe = joblib.load("ames_housing_pipeline.pkl")
+pred = pipe.predict(raw_records)`}
+          </pre>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+        <div className="container-narrow max-w-3xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
+            What I took away
+          </h2>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed">
+            Beyond the score, this case study sharpened the habits that matter
+            in applied ML:{" "}
+            <span className="text-[var(--color-text)] font-medium">
+              splitting before transforming, diagnosing rather than assuming,
+              and interpreting models rather than just fitting them
+            </span>
+            . It also demonstrated that a method as classical as linear
+            regression still rewards a professional, reproducible pipeline.
+          </p>
         </div>
       </section>
     </>

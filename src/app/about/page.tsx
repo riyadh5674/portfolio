@@ -153,6 +153,41 @@ export default function AboutPage() {
 
           <div className="mb-8">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
+              Core expertise
+            </h3>
+            <div className="space-y-4">
+              {[
+                { name: "Machine Learning & Data Science", pct: 88 },
+                { name: "Python & Scientific Computing", pct: 92 },
+                { name: "Algorithmic Problem Solving", pct: 86 },
+                { name: "Software Engineering", pct: 82 },
+                { name: "Mathematics & Statistics", pct: 84 },
+                { name: "Robotics & Control", pct: 78 },
+              ].map((skill) => (
+                <Reveal key={skill.name} delay={60}>
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm text-[var(--color-text)] font-medium">
+                        {skill.name}
+                      </span>
+                      <span className="font-mono text-xs text-[var(--color-text-tertiary)]">
+                        {skill.pct}%
+                      </span>
+                    </div>
+                    <div className="h-2 rounded-full bg-[var(--color-bg-soft)] border border-[var(--color-border-light)] overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] animate-fill-bar"
+                        style={{ width: `${skill.pct}%` }}
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
               Algorithmic practice
             </h3>
             <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
@@ -243,7 +278,22 @@ export default function AboutPage() {
                     TeaQuest
                   </Link>
                 </li>
-                <li>More coming</li>
+                <li>
+                  <Link
+                    href="/projects/innovation-club-website"
+                    className="hover:text-[var(--color-accent)] transition-colors"
+                  >
+                    SUB Innovation Club Website
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/projects/ames-housing-price-prediction"
+                    className="hover:text-[var(--color-accent)] transition-colors"
+                  >
+                    Ames Housing Price Prediction
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="card p-6">
@@ -271,7 +321,7 @@ export default function AboutPage() {
             exchanging ideas, I&apos;d be glad to connect.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="mailto:riyadhmia999@gmail.com" className="btn-primary">
+            <a href="mailto:riyadhmia999@gmail.com" className="btn-primary sheen">
               Email Me
             </a>
             <a

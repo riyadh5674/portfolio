@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "MD RIYAD — Portfolio",
     images: [
       {
-        url: "/portfolio/og.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "MD RIYAD — Computer Science, Machine Learning & Research",
@@ -60,7 +60,12 @@ export const metadata: Metadata = {
     title: "MD RIYAD — Computer Science, Machine Learning & Research",
     description:
       "Researching intelligent systems. Building thoughtful software.",
-    images: ["/portfolio/og.png"],
+    images: ["/og.png"],
+  },
+  icons: {
+    icon: "/portfolio/app-icon.png",
+    shortcut: "/portfolio/app-icon.png",
+    apple: "/portfolio/app-icon.png",
   },
   robots: {
     index: true,
