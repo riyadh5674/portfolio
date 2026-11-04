@@ -10,6 +10,7 @@ import Typewriter from "@/components/Typewriter";
 import Counter from "@/components/Counter";
 import Marquee from "@/components/Marquee";
 import Spotlight from "@/components/Spotlight";
+import { ParticleField } from "@/components/ParticleField";
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       {/* ==================== HERO ==================== */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+        <ParticleField className="fixed inset-0 -z-10" count={35} color="var(--color-accent)" />
         <div className="container-narrow relative z-10">
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] items-center py-16">
             {/* Left — copy */}
@@ -122,7 +124,7 @@ export default function HomePage() {
                 className="absolute inset-0 m-auto h-72 w-72 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent-2)] to-[var(--color-accent-3)] opacity-30 blur-3xl animate-glow-pulse"
                 aria-hidden="true"
               />
-              <Tilt className="relative animate-scale-in">
+              <Tilt className="relative animate-scale-in" shine max={10} scale={1.03}>
                 <div className="card card-glow p-8 flex flex-col items-center text-center overflow-hidden">
                   {/* rotating conic ring behind avatar */}
                   <div className="relative mb-6">
@@ -150,7 +152,7 @@ export default function HomePage() {
 
                   <div className="mt-6 w-full border-t border-[var(--color-border)] pt-5 flex items-center justify-center gap-4 text-xs text-[var(--color-text-tertiary)]">
                     <span className="inline-flex items-center gap-1.5">
-                      <span className="text-[var(--color-success)]">●</span> Available
+                      <span className="text-[var(--color-success)] animate-pulse">●</span> Available
                     </span>
                     <span className="inline-flex items-center gap-1.5">
                       <span className="text-[var(--color-accent)]">●</span> Research

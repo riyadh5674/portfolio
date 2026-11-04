@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Spotlight from "@/components/Spotlight";
 
@@ -318,3 +318,4 @@ export default function ResearchPage() {
     </>
   );
 }
+

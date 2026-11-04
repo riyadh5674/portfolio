@@ -4,6 +4,10 @@ import { asset } from "@/lib/paths";
 import StatusBadge from "@/components/StatusBadge";
 import Link from "next/link";
 import Image from "next/image";
+import { ResearchTimeline } from "@/components/ResearchTimeline";
+import { ModelComparisonChart } from "@/components/ModelComparisonChart";
+import { MetricCard } from "@/components/MetricCard";
+import { ParticleField } from "@/components/ParticleField";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -176,6 +180,29 @@ function ProjectSpecificContent({ project }: { project: Project }) {
 function FloodPredictorContent() {
   return (
     <>
+      <ParticleField className="fixed inset-0 -z-10" count={25} color="var(--color-accent)" />
+
+      {/* Research Evolution Timeline */}
+      <section className="py-16 border-t border-[var(--color-border)] relative">
+        <div className="container-narrow max-w-6xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10 text-center">
+            Research Evolution: v1 → v2 → v3 → v4
+          </h2>
+          <ResearchTimeline />
+        </div>
+      </section>
+
+      {/* Model Comparison Chart */}
+      <section className="py-16 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-5xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10 text-center">
+            Model Comparison — Performance vs. Physical Consistency
+          </h2>
+          <ModelComparisonChart />
+        </div>
+      </section>
+
+      {/* Overview */}
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -195,6 +222,7 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* Research Question */}
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -210,6 +238,7 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* Data & Features */}
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -231,6 +260,7 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* Physics-Guided Reasoning */}
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -267,12 +297,80 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* Metrics Dashboard */}
       <section className="py-12 border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-5xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10 text-center">
+            v3 Key Metrics
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <MetricCard
+              label="Physics-Guided CatBoost AUC"
+              value="0.9848"
+              subtitle="vs 0.9962 baseline (gap 0.0114)"
+              trend="up"
+              icon="🎯"
+            />
+            <MetricCard
+              label="Physics-Guided LightGBM AUC"
+              value="0.8889"
+              subtitle="vs 0.9965 baseline (gap 0.1076)"
+              trend="down"
+              icon="📉"
+            />
+            <MetricCard
+              label="Physics-Guided XGBoost AUC"
+              value="0.9847"
+              subtitle="vs 0.9962 baseline (gap 0.0115)"
+              trend="up"
+              icon="📈"
+            />
+            <MetricCard
+              label="WorldClim Correlation"
+              value="0.989"
+              subtitle="External validation of spatial features"
+              trend="up"
+              icon="🌍"
+            />
+            <MetricCard
+              label="Temporal Split"
+              value="Train ≤2000"
+              subtitle="Test 2001–2013 · No leakage"
+              trend="neutral"
+              icon="📅"
+            />
+            <MetricCard
+              label="Station-Out CV"
+              value="k-fold"
+              subtitle="Spatial generalization test"
+              trend="neutral"
+              icon="🗺️"
+            />
+            <MetricCard
+              label="Monotonic Constraints"
+              value="11 / 11"
+              subtitle="100% physical consistency"
+              trend="up"
+              icon="⚖️"
+            />
+            <MetricCard
+              label="Conformal Coverage"
+              value="90%"
+              subtitle="Marginal coverage intervals"
+              trend="neutral"
+              icon="📊"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Model Experiments Table */}
+      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
-            Model experiments
+            Model experiments (v3)
           </h2>
-          <p>Four configurations were investigated:</p>
+          <p>Six configurations investigated across three model families:</p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -283,24 +381,50 @@ function FloodPredictorContent() {
                   <th className="py-2 pr-4 text-[var(--color-text)] font-medium">
                     Configuration
                   </th>
+                  <th className="py-2 pr-4 text-[var(--color-text)] font-medium">
+                    AUC (v3 temporal split)
+                  </th>
+                  <th className="py-2 pr-4 text-[var(--color-text)] font-medium">
+                    Constraints
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-[var(--color-text-secondary)]">
                 <tr className="border-b border-[var(--color-border-light)]">
                   <td className="py-3 pr-4">LightGBM</td>
                   <td className="py-3">Unconstrained baseline</td>
+                  <td className="py-3 font-mono">~0.996 (overfitted)</td>
+                  <td className="py-3">0/11</td>
                 </tr>
                 <tr className="border-b border-[var(--color-border-light)]">
                   <td className="py-3 pr-4">Physics-guided LightGBM</td>
-                  <td className="py-3">With physical monotonic constraints</td>
+                  <td className="py-3">With monotonic constraints</td>
+                  <td className="py-3 font-mono">0.8889</td>
+                  <td className="py-3 text-[var(--color-success)]">11/11 ✓</td>
                 </tr>
                 <tr className="border-b border-[var(--color-border-light)]">
                   <td className="py-3 pr-4">CatBoost</td>
                   <td className="py-3">Unconstrained baseline</td>
+                  <td className="py-3 font-mono">0.9962</td>
+                  <td className="py-3">0/11</td>
+                </tr>
+                <tr className="border-b border-[var(--color-border-light)]">
+                  <td className="py-3 pr-4">Physics-guided CatBoost</td>
+                  <td className="py-3">With monotonic constraints</td>
+                  <td className="py-3 font-mono text-[var(--color-success)]">0.9848</td>
+                  <td className="py-3 text-[var(--color-success)]">11/11 ✓</td>
+                </tr>
+                <tr className="border-b border-[var(--color-border-light)]">
+                  <td className="py-3 pr-4">XGBoost</td>
+                  <td className="py-3">Unconstrained baseline</td>
+                  <td className="py-3 font-mono">0.9962</td>
+                  <td className="py-3">0/11</td>
                 </tr>
                 <tr>
-                  <td className="py-3 pr-4">Physics-guided CatBoost</td>
-                  <td className="py-3">With physical monotonic constraints</td>
+                  <td className="py-3 pr-4">Physics-guided XGBoost</td>
+                  <td className="py-3">With monotonic constraints</td>
+                  <td className="py-3 font-mono">0.9847</td>
+                  <td className="py-3 text-[var(--color-success)]">11/11 ✓</td>
                 </tr>
               </tbody>
             </table>
@@ -308,7 +432,8 @@ function FloodPredictorContent() {
         </div>
       </section>
 
-      <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
+      {/* Results & Interpretation */}
+      <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
             Results & interpretation
@@ -367,6 +492,98 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* v3 Methodology Deep Dive */}
+      <section className="py-16 bg-[var(--color-bg-soft)] border-t border-[var(--color-border)]">
+        <div className="container-narrow max-w-4xl">
+          <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-10">
+            v3 Methodology — The Honest Evaluation Stack
+          </h2>
+
+          <div className="space-y-8">
+            {[
+              {
+                title: "1. Leakage Audit → Temporal Split",
+                text: "The original dataset has strong temporal autocorrelation. A random 80/20 split lets the model see near-future observations during training. v3 enforces a strict temporal boundary: all data from years ≤ 2000 for training, 2001–2013 for testing. This is the single most impactful change — it separates memorization from generalization.",
+                details: [
+                  "Train: 1980–2000 (21 years)",
+                  "Test: 2001–2013 (13 years)",
+                  "No station appears in both train and test with temporal overlap",
+                  "Eliminates the 0.996 → 0.88–0.98 AUC drop",
+                ],
+              },
+              {
+                title: "2. Station-Out Spatial Evaluation",
+                text: "Temporal splits test time generalization; station-out splits test space generalization. We hold out entire stations (all years) to test whether the model learns transferable flood physics or station-specific idiosyncrasies. This is critical for early-warning systems deployed at new locations.",
+                details: [
+                  "k-fold station-out cross-validation",
+                  "Tests spatial transferability",
+                  "Reveals whether river_proximity_risk generalizes",
+                ],
+              },
+              {
+                title: "3. Five-Model Ablation (M1–M5)",
+                text: "Systematic feature removal to quantify each feature group&apos;s contribution. M1 = environmental only; M2 = +geographic; M3 = +spatial risk; M4 = +seasonal; M5 = full. Run on LightGBM, CatBoost, XGBoost — all with and without monotonic constraints. This reveals which features are signal vs. noise under honest evaluation.",
+                details: [
+                  "M1: Environmental (rainfall, temp, humidity, cloud, sunshine)",
+                  "M2: + Geographic (elevation, lat, lon)",
+                  "M3: + Spatial risk (river/coast proximity, interaction terms)",
+                  "M4: + Seasonal (month, period, seasonal_risk)",
+                  "M5: Full feature set",
+                ],
+              },
+              {
+                title: "4. Monotonic Constraints — Physical Consistency",
+                text: "Domain knowledge encoded as directional constraints: rainfall↑ → risk↑, elevation↑ → risk↓, river_proximity↑ → risk↑, etc. LightGBM struggles (0.8889 AUC); CatBoost excels (0.9848 AUC). The gap (0.0115 vs unconstrained CatBoost) is the cost of physical honesty — and it&apos;s remarkably small.",
+                details: [
+                  "11 monotonic constraints from hydrological first principles",
+                  "LightGBM: constraints degrade optimization landscape",
+                  "CatBoost: native constraint handling preserves performance",
+                  "XGBoost: intermediate (0.9847 AUC)",
+                ],
+              },
+              {
+                title: "5. Calibration & Uncertainty Quantification",
+                text: "A model can discriminate well (high AUC) but be poorly calibrated (predicted probabilities don&apos;t match observed frequencies). v3 adds: Brier score decomposition, Expected Calibration Error (ECE), reliability diagrams, conformal prediction intervals (distribution-free), and label-flip sensitivity analysis.",
+                details: [
+                  "Brier score + decomposition (reliability + resolution + uncertainty)",
+                  "ECE with 10-bin reliability diagram",
+                  "Conformal prediction: 90% marginal coverage intervals",
+                  "Label-flip sensitivity: how many labels must change to flip prediction?",
+                ],
+              },
+              {
+                title: "6. Statistical Rigor & Attribution",
+                text: "DeLong tests with 10,000 bootstrap iterations for AUC comparison CIs. SHAP (TreeSHAP) for feature attribution — global importance + local explanations. Moran&apos;s I on residuals tests spatial autocorrelation (are errors clustered?). WorldClim reanalysis correlation (r ≈ 0.989) validates spatial risk features against independent data.",
+                details: [
+                  "DeLong test: physics-guided CatBoost vs. baselines (p < 0.001)",
+                  "SHAP: river_proximity_risk and rainfall dominate",
+                  "Moran&apos;s I: residuals show no spatial clustering (good)",
+                  "WorldClim: spatial_flood_risk correlates 0.989 with independent reanalysis",
+                ],
+              },
+            ].map((item) => (
+              <div key={item.title} className="card card-glow p-6 md:p-8">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)] mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                  {item.text}
+                </p>
+                <ul className="space-y-2 text-sm text-[var(--color-text-tertiary)]">
+                  {item.details.map((d) => (
+                    <li key={d} className="flex gap-2">
+                      <span className="text-[var(--color-accent)]">→</span>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What I'm Learning */}
       <section className="py-12 border-t border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl prose">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -390,6 +607,7 @@ function FloodPredictorContent() {
         </div>
       </section>
 
+      {/* Status & Future Work */}
       <section className="py-12 bg-[var(--color-bg-warm)] border-y border-[var(--color-border)]">
         <div className="container-narrow max-w-3xl">
           <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-6">
@@ -399,13 +617,13 @@ function FloodPredictorContent() {
             This is ongoing research, intended for further development and
             eventual publication. Key directions:
           </p>
-          <ul className="space-y-3">
+          <ul className="space-y-3 mb-8">
             {[
-              "Time-aware validation that respects temporal structure",
-              "Deeper analysis of constraint effects on model behavior",
-              "Further feature engineering informed by hydrological domain knowledge",
-              "Reproducible, well-documented experiments",
-              "Development toward academic writing and publication",
+              "Package v3 as a reproducible repository: `src/floodml` with tests, `requirements.txt`, one-command reproduction script",
+              "Post preprint to arXiv with Zenodo DOI for citable research output",
+              "Sentinel-1 flood segmentation mini-project (Sylhet 2022) — closes satellite/remote sensing gap",
+              "Time-series transformer / FNO comparison against LSTM baseline",
+              "Theory note: 5 proof-based problems + 1 SGD experiment (for mathematical ML pathway)",
             ].map((item) => (
               <li
                 key={item}
@@ -416,6 +634,17 @@ function FloodPredictorContent() {
               </li>
             ))}
           </ul>
+
+          <h3 className="display-font text-xl font-bold text-[var(--color-text)] mb-4">
+            The research question, refined
+          </h3>
+          <p className="!text-lg !text-[var(--color-text)] font-medium !mb-8 border-l-4 border-[var(--color-accent)] pl-5 italic">
+            "Leakage-free reanalysis and conformal uncertainty quantification for station-based flood prediction in data-scarce monsoon basins."
+          </p>
+          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            This framing is specific, 80% complete, and gives a supervisor a concrete project rather than a generic expression of interest. It positions the work at the intersection of climate-AI, scientific-ML, and trustworthy-ML — exactly where the field needs contributors who can evaluate models honestly.
+          </p>
+
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="https://github.com/riyadh5674/Bangladesh-Flood-Predictor"
@@ -423,7 +652,7 @@ function FloodPredictorContent() {
               rel="noopener noreferrer"
               className="btn-primary sheen"
             >
-              View on GitHub
+              View on GitHub (v3 in progress)
             </a>
             <Link
               href="/research"

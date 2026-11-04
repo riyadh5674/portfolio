@@ -26,7 +26,10 @@ export default function Counter({ end, suffix = "", duration = 1400, className =
             const tick = (now: number) => {
               const p = Math.min((now - start) / duration, 1);
               const eased = 1 - Math.pow(1 - p, 3);
-              setValue(Math.round(end * eased));
+              const current = end * eased;
+              // Preserve decimal places from the original end value
+              const decimals = (end.toString().split('.')[1] || '').length;
+              setValue(Number(current.toFixed(decimals)));
               if (p < 1) requestAnimationFrame(tick);
             };
             requestAnimationFrame(tick);

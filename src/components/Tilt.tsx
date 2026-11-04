@@ -7,11 +7,13 @@ interface TiltProps {
   className?: string;
   max?: number;
   scale?: number;
+  shine?: boolean;
 }
 
-export default function Tilt({ children, className = "", max = 8, scale = 1.02 }: TiltProps) {
+export default function Tilt({ children, className = "", max = 8, scale = 1.02, shine = false }: TiltProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState<React.CSSProperties>({});
+  const [shineStyle, setShineStyle] = useState<React.CSSProperties>({});
 
   useEffect(() => {
     const el = ref.current;
@@ -28,6 +30,15 @@ export default function Tilt({ children, className = "", max = 8, scale = 1.02 }
         transform: `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${scale})`,
         transition: "transform 0.08s ease-out",
       });
+
+      if (shine) {
+        const shineX = px * 100;
+        const shineY = py * 100;
+        setShineStyle({
+          background: `radial-gradient(ellipse at ${shineX}% ${shineY}%, rgba(45, 212, 191, 0.15) 0%, transparent 60%)`,
+          opacity: 1,
+        });
+      }
     };
 
     const onLeave = () => {
@@ -35,6 +46,9 @@ export default function Tilt({ children, className = "", max = 8, scale = 1.02 }
         transform: "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)",
         transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1)",
       });
+      if (shine) {
+        setShineStyle({ opacity: 0, transition: "opacity 0.5s ease" });
+      }
     };
 
     el.addEventListener("mousemove", onMove);
@@ -43,10 +57,16 @@ export default function Tilt({ children, className = "", max = 8, scale = 1.02 }
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
     };
-  }, [max, scale]);
+  }, [max, scale, shine]);
 
   return (
-    <div ref={ref} className={`tilt-card ${className}`} style={style}>
+    <div ref={ref} className={`tilt-card relative overflow-hidden ${className}`} style={style}>
+      {shine && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={shineStyle}
+        />
+      )}
       {children}
     </div>
   );
